@@ -10,9 +10,10 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
+      const DATABASE_URL = new Config.Secret(stack, "DATABASE_URL")
       const SECRET_VAL = new Config.Secret(stack, "SECRET_VAL")
       const site = new NextjsSite(stack, "site", {
-        bind: [SECRET_VAL],
+        bind: [DATABASE_URL, SECRET_VAL],
       });
       
 

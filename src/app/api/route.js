@@ -9,7 +9,8 @@ export const revalidate = 0
 
 export async function GET(request){
     const secretVal = Config.SECRET_VAL
+    const dbString = Config.DATABASE_URL
     const stage = Config.STAGE
-    return NextResponse.json({hello: "World", stage: stage, secretVal: secretVal}, {status: 200})
+    return NextResponse.json({hello: "World", stage: stage, secretVal: secretVal, dbString: `${dbString}`.slice(0, 25)}, {status: 200})
 
 }
