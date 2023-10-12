@@ -6,7 +6,8 @@
     "dev": "sst bind next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "AWS_PROFILE=production sst deploy --stage production"
   },
   "dependencies": {
     "next": "13.5.4",
