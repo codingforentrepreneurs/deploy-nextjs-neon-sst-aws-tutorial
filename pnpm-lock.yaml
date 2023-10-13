@@ -28,6 +28,9 @@ devDependencies:
   aws-cdk-lib:
     specifier: 2.95.1
     version: 2.95.1(constructs@10.2.69)
+  aws-sdk:
+    specifier: ^2.1473.0
+    version: 2.1473.0
   constructs:
     specifier: 10.2.69
     version: 10.2.69
@@ -49,6 +52,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
+  tsx:
+    specifier: ^3.13.0
+    version: 3.13.0
 
 packages:
 
@@ -3342,8 +3348,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /aws-sdk@2.1472.0:
-    resolution: {integrity: sha512-U7kAHRbvTy753IXKV8Oom/AqlqnsbXG+Kw5gRbKi6VcsZ3hR/EpNMzdRXTWO5U415bnLWGo8WAqIz67PIaaKsw==}
+  /aws-sdk@2.1473.0:
+    resolution: {integrity: sha512-fl45qeU/Mjhfdocsh38Uw9hkZIec10gMfYDovtWm9/eK8V6zn3jtHUNKPfM2yXCjebmsk3s0FNR21aSv5suzsQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -3475,7 +3481,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: true
 
@@ -3547,7 +3553,7 @@ packages:
       '@aws-cdk/cloud-assembly-schema': 2.95.1
       '@aws-cdk/cx-api': 2.95.1(@aws-cdk/cloud-assembly-schema@2.95.1)
       archiver: 5.3.2
-      aws-sdk: 2.1472.0
+      aws-sdk: 2.1473.0
       glob: 7.2.3
       mime: 2.6.0
       yargs: 16.2.0
@@ -6949,7 +6955,7 @@ packages:
       adm-zip: 0.5.10
       aws-cdk-lib: 2.95.1(constructs@10.2.69)
       aws-iot-device-sdk: 2.2.12
-      aws-sdk: 2.1472.0
+      aws-sdk: 2.1473.0
       builtin-modules: 3.2.0
       cdk-assets: 2.95.1
       chalk: 5.3.0
@@ -7302,6 +7308,17 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
+
+  /tsx@3.13.0:
+    resolution: {integrity: sha512-rjmRpTu3as/5fjNq/kOkOtihgLxuIz6pbKdj9xwP4J5jOLkBxw/rjN5ANw+KyrrOXV5uB7HC8+SrrSJxT65y+A==}
+    hasBin: true
+    dependencies:
+      esbuild: 0.18.20
+      get-tsconfig: 4.7.2
+      source-map-support: 0.5.21
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
 
   /type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}

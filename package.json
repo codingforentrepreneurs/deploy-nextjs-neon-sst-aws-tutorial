@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "drizzle-kit generate:pg --config=drizzle.config.js",
+    "migrate": "tsx src/app/cli/migrator.js",
     "deployStaging": "sst deploy --stage staging",
     "deploy": "sst deploy --stage production"
   },
@@ -21,12 +22,14 @@
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "aws-cdk-lib": "2.95.1",
+    "aws-sdk": "^2.1473.0",
     "constructs": "10.2.69",
     "drizzle-kit": "^0.19.13",
     "eslint": "^8.51.0",
     "eslint-config-next": "13.5.4",
     "postcss": "^8.4.31",
     "sst": "^2.29.0",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "tsx": "^3.13.0"
   }
 }
