@@ -15,7 +15,11 @@ export async function dbClient (useSQLOnly) {
 
 export async function dbNow () {
     const sql = await dbClient(true)
-    return sql`SELECT NOW()`
+    const dbResult = await sql`SELECT NOW()`
+    if (dbResult.length === 1) {
+        return dbResult[0].now
+    }
+    return null
 }
 
 export async function addLead({email}){
