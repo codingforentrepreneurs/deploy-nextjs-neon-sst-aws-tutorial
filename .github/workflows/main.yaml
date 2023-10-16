@@ -27,10 +27,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            .next/
+            .next/cache/
             .open-next/
             .sst/
-          key: cache-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles("**.[jt]s", "**.[jt]xs",) }}
+          key: cache-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]xs') }}
           restore-keys: |
             cache-${{ hashFiles('**/pnpm-lock.yaml') }}-
       - name: Install Pnpm
