@@ -42,3 +42,7 @@ jobs:
 
       - name: Deploy to AWS with SST
         run: pnpm run deploy
+
+      - name: Clean Up AWS Profile
+        run: |
+          rm -rf ~/.aws
