@@ -50,9 +50,16 @@ jobs:
         run: |
           npx sst secrets set COMMIT_SHA '${{ github.sha }}' --stage production
 
-      - name: Deploy to AWS with SST
-        run: pnpm run deploy
+      # - name: Deploy to AWS with SST
+      #   run: pnpm run deploy
 
       - name: Clean Up AWS Profile
         run: |
           rm -rf ~/.aws
+      
+      - name: Create Pull Request to Production
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --base production --head staging --title "Staging to Production" --body "Automatic PR from Staging to Production"
