@@ -21,6 +21,9 @@ jobs:
       - name: Install projects deps
         run: pnpm install
       
+      - name: Deploy to AWS with SST
+        run: pnpm run deploy
+      
       # name: Install AWS Creds
 
       # name: Set SST Config Secret
