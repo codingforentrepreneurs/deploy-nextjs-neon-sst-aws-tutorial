@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import HeroLandingPage from '@/app/leadCapture/hero'
 
 
