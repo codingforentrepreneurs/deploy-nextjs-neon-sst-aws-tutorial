@@ -44,6 +44,10 @@ jobs:
         run: |
           npx sst secrets set COMMIT_SHA '${{ github.sha }}' --stage production
 
+      - name: Production Database Migrations
+        run: |
+          pnpm run migrate
+
       - name: Deploy to AWS with SST
         run: pnpm run deploy
 
