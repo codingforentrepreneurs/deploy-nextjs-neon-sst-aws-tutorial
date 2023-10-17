@@ -1,7 +1,19 @@
-name: One-Off Deploy via SST to AWS
+name: Staging Deploy via SST to AWS
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - "main"
+      - "master"
+    paths:
+      - ".github/workflows/main.yaml"
+      - "src/**"
+      - "*.json"
+      - "*.yaml"
+      - "*.json"
+      - "*.config.js"
+      - "*.config.ts"
 
 jobs:
   deploy:
@@ -36,10 +48,15 @@ jobs:
 
       - name: Set SST Config Secret
         run: |
-          npx sst secrets set COMMIT_SHA '${{ github.sha }}' --stage production
-
+          npx sst secrets set DATABASE_URL '${{ secrets.DATABASE_URL_STAGING }}' --stage staging
+          npx sst secrets set COMMIT_SHA '${{ github.sha }}' --stage staging
+      
+      - name: Run Staging DB migrations
+        run: |
+          STAGE=staging tsx src/app/cli/migrator.js
+        
       - name: Deploy to AWS with SST
-        run: pnpm run deploy
+        run: pnpm run deployStaging
 
       - name: Clean Up AWS Profile
         run: |
