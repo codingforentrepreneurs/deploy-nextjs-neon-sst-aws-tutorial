@@ -7,7 +7,7 @@ on:
       - "main"
       - "master"
     paths:
-      - ".github/workflows/main.yaml"
+      - ".github/workflows/stage.yaml"
       - "src/**"
       - "*.json"
       - "*.yaml"
@@ -53,7 +53,7 @@ jobs:
       
       - name: Run Staging DB migrations
         run: |
-          STAGE=staging tsx src/app/cli/migrator.js
+          STAGE=staging npx tsx src/app/cli/migrator.js
         
       - name: Deploy to AWS with SST
         run: pnpm run deployStaging
