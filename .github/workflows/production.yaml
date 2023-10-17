@@ -1,0 +1,56 @@
+name: Deploy Production via SST to AWS
+
+on:
+  pull_request:
+    branches:
+      - production
+    types:
+      - closed
+  # workflow_dispatch:
+
+jobs:
+  production:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - name: Cache Next.js Build
+        uses: actions/cache@v3
+        with:
+          path: |
+            .next/cache/
+            .open-next/
+            .sst/
+          key: cache-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]xs') }}
+          restore-keys: |
+            cache-${{ hashFiles('**/pnpm-lock.yaml') }}-
+      - name: Install Pnpm
+        run: npm install -g pnpm
+      
+      - name: Install projects deps
+        run: pnpm install
+      
+      - name: Install AWS Creds
+        run: |
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+
+      - name: Set SST Config Secret
+        run: |
+          npx sst secrets set COMMIT_SHA '${{ github.sha }}' --stage production
+
+      - name: Deploy to AWS with SST
+        run: pnpm run deploy
+
+      - name: Clean Up AWS Profile
+        run: |
+          rm -rf ~/.aws
+      
+      # - name: Remove Staging Deployment
+      #   run: |
+      #     npx sst remove --stage staging
