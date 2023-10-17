@@ -49,6 +49,7 @@ jobs:
       - name: Set SST Config Secret
         run: |
           npx sst secrets set DATABASE_URL '${{ secrets.DATABASE_URL_STAGING }}' --stage staging
+          npx sst secrets set SECRET_VAL '${{ github.sha }}' --stage staging
           npx sst secrets set COMMIT_SHA '${{ github.sha }}' --stage staging
       
       - name: Run Staging DB migrations

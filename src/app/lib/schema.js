@@ -12,7 +12,7 @@ export const LeadTable = pgTable("leads", {
 })
 
 export const insertLeadTableSchema = createInsertSchema(LeadTable, {
-    email: (schema) => schema.email.email().min(4).refine((val)=>{!validator.contains(val, "gmail.com")}, {message: "Email must not be gmail."}),
+    email: (schema) => schema.email.email(),
     firstName: (schema) => schema.firstName.min(2).max(150).optional(),
     lastName: (schema) => schema.lastName.min(2).max(150).optional(),
 })
