@@ -29,8 +29,8 @@ export default function LeadCaptureForm () {
 
     }
     const btnLabel = loading ? "Loading" : "Join List"
-    return <form className='space-x-3' onSubmit={handleForm}>
-        <input type='text' required name='email' placeholder="Your Email" />
-        <button disabled={loading} className='bg-green-500 hover:bg-green-700 text-white px-3 rounded' type='submit'>{btnLabel}</button>
+    return <form className='space-y-3' onSubmit={handleForm}>
+        <input type='email' required name='email' placeholder="Your Email" />
+        <button disabled={loading} className='btn-join' type='submit'>{btnLabel}</button>
     </form>
 }
